@@ -1,38 +1,305 @@
-.App {
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body,
+html,
+#root {
+  height: 100%;
+  margin: 0;
+  font-family: "Poppins", Arial, sans-serif;
+  background-image: linear-gradient( 180deg,  #f3c9dd88 10.2%, #72aec5b7 50%);
+
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.header {
+  background-color: none;
+  flex: 0 0 10%;
+  border-radius: 2rem 2rem 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.header h2 {
+  color: #72AEC5;
+}
+
+.footer {
+  flex: 0 0 10%;
+  background-color: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius:  0 0 2rem 2rem;
+  box-sizing: border-box;
+}
+
+.footer p {
+  color: #3B465C;
+  font-size: 1.2rem;
+}
+
+.main {
+  color: #3B465C;
+  flex: 1 0 80%;
+  background-color: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+.difficulty {
+  flex: 1 0 10%;
+  background-color: none;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.gridboard {
+  flex: 1 0 90%;
+  background-color: none;
+  width: 100%;
+  box-sizing: border-box;
+  display: inline-block;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* ------------------------ grid ------------------------ */
+.board-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-items: center;
+  align-content: center;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-aspect-ratio: 1/1) {
+  .board-container {
+    flex-direction: row;
+  }
+}
+
+.grid-wrapper {
+  flex: 1;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  /* align-content: center; */
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  width: auto;
+}
+
+.answer-wrapper {
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+  box-sizing: border-box;
+}
+
+.grid-wrapper {
+  position: "relative";
+  box-sizing: border-box;
+}
+
+.grid {
+  display: grid;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.line-drawer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+
+/* ------------------------ block ------------------------ */
+.block {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ivory;
+  font-size: 1.5rem;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.block.selected {
+  background-color: rgb(29, 68, 150);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* ------------------------ answer ------------------------ */
+
+.answer-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  align-items: center;
+  justify-items: center;
+  height: 100%;
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+
+.answer-block {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+
+}
+
+.answer {
+  display: flex;
+  margin: 5px;
+}
+
+.answer-box {
+  width: 30px;
+  height: 30px;
+  border: 1px solid gray;
+  color: black;
+  background-color: ivory;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin: 0;
+}
+
+.modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.6rem 3rem;
+  border-radius: 5px;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  background-color:rgba(255, 255, 240, 0.849);
+}
+
+.modal-content p {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+
+.modal-content button {
+  background-color: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  padding: 10px;
+  margin: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #3B465C;
+
+}
+
+.modal-content button:active {
+  box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 0 0;
+  transform: translate(2px, 2px);
+}
+
+.hint {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  width: 40%;
+  margin-top: 10px;
+}
+
+
+.hint img {
+  width: 30px;
+  height: 30px;
+  margin: 10px;
+}
+
+
+/* CSS */
+.hint button, .difficulty button {
+  background-color: ivory;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #3B465C 3px 3px 0 0;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 0 16px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  color: #3B465C;
+
+}
+
+
+.hint button:active, .difficulty button:active {
+  box-shadow: #3B465C 1px 1px 0 0;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  .hint button, .difficulty button{
+    min-width: 120px;
+    padding: 0 25px;
   }
 }
