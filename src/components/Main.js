@@ -35,7 +35,7 @@ const Main = () => {
       throw new Error('Invalid letters format');
     }
 
-    // 初始化游戏状态
+    // reset game state
     if (gridRef.current && gridRef.current.resetGameState) {
       gridRef.current.resetGameState();
     }
@@ -48,7 +48,7 @@ const Main = () => {
   };
 
   useEffect(() => {
-    loadNewGame('easy'); // 默认加载 'easy' 难度的内容
+    loadNewGame('easy'); // set easy as default
   }, []);
 
   return (

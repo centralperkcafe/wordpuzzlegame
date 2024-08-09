@@ -37,7 +37,7 @@ const Grid = forwardRef(
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [hintsUsed, setHintsUsed] = useState(0);
     const [revealedLetters, setRevealedLetters] = useState({});
-    const [modalMessage, setModalMessage] = useState(""); // 新增状态用于保存modal消息
+    const [modalMessage, setModalMessage] = useState(""); // add modalMessage state
     const maxHints = 5;
     const gridRef = useRef(null);
 
@@ -103,7 +103,7 @@ const Grid = forwardRef(
         setIsModalOpen(true);
         displayConfetti();
 
-        // 生成随机消息
+        // generate random message
         const messages = [
           "Well done!",
           "Awesome!",
@@ -204,7 +204,7 @@ const Grid = forwardRef(
 
         setHintsUsed((prev) => prev + 1);
 
-        // 检查是否所有单词的字母都已显示出来
+        // check if all words are found
         let allLettersRevealed = true;
         for (const answer of answers) {
           if (
@@ -221,7 +221,7 @@ const Grid = forwardRef(
           setIsModalOpen(true);
           displayConfetti();
 
-          // 生成随机消息
+          // generate random message
           const messages = [
             "Well done!",
             "Awesome!",
@@ -338,7 +338,7 @@ const Grid = forwardRef(
           <NoticeModal
             onClose={handleClose}
             onNextGame={handleNextGame}
-            message={modalMessage} // 传递modalMessage到NoticeModal
+            message={modalMessage} // pass modalMessage to NoticeModal
           />
         )}
       </div>
